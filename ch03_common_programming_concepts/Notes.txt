@@ -1,0 +1,75 @@
+
+Chapter 03: Common Programming Concepts
+
+- floating point numbers
+    - defined in IEEE-754 standars
+        + three fields: sign, exponent, fraction
+            : sign - (1 bit) representing positive or negative
+            : exponent - (? bits) representing exponent of 10^x 
+            : fraction(mantissa) - (? bits) representing significant digits
+
+        + valid scientific notation has 1 significant digit before the decimal 
+            : (+0.754 * 10^15 is incorrect)
+            : (+7.54 * 10^14 is correct)
+        
+        + when stored in binary, a numbers significant digit before the decimal point is
+        always '1'
+            : normalized Floating Point format is +/-1.bbbbb * 2^exp 
+
+        + exponent needs its own sign (+/-)
+            : rather than use twos compliment to represent negative numbers (wastes 
+            1 bit), the exponent is biased.
+            : if there are E bits in the exponent, the bias is typically set as 
+                    b = 2 ^ (E-1) -1
+            : possible integer values that the biased exponent can express lie in the 
+            range [1-b, b]
+                - exponent of all zeros and all ones are reserved for special values (?)
+                - thus expressable integers lie in range [ 1 , (2 ^ E) -2]
+                - the maximum biased value is (2^E -2) - b = 2b - b = b
+                - the minumum biased value is 1 - b 
+
+    - single-precision
+            : 32 bit format
+            : 1 sign bit
+            : 8 exponent bits
+            : 23 mantissa bits
+            : 127 exponenent biased
+            : equivalent decimal range - 7 digits * 10 ^ +/- 38
+
+    - double-precision
+            : 64 bit format
+            : 1 sign bit
+            : 11 exponent bits
+            : 52 mantissa bits
+            : 1023 exponent bias
+            : equivalent decimal range - 16 digits * 10 ^ +/- 308
+
+-methods of representing negative numbers in memory    
+    - twos compliment
+            : common methd of representing signed numbers in binary
+            : benefits
+                1) subtraction (A-B) becomes addition (A+(-B)), same hardware can be used for both operations
+                2) single zero (sign-magnitude numbers have +0 and -0)
+                3) left most bit is sign bit (comparison made easy)
+    - ones compliment
+            : negative numbers represented as inversion of binary bits of original number
+            : problem with +0/-0
+    - sign magnitude
+            : signed numbers represented with a 1 (negative) or a 0 (positive) in the most significant bit position
+           
+
+
+- booleans take up one byte in memory because 1 byte is he smallest unit of addressable space in memory
+
+- chars take up 4 bytes in memory and represents a Unicode Scalar Value
+
+- UTF-8 (Unicode Transformation Format)
+    - 1 - 4 bytes per character
+    - backwards compatiblewith ASCII (128 characters)
+     
+
+- "... the compiler adds runtime code to perform the conditional check on every element on every iteration through
+    the loop" (?) 
+    - 1. compiler checks that increment < 5
+    - 2. compiler checks that list[i] is within bounds, else Panic
+    - these checks not performed in for element in list.iter(){} or for element in list{}
