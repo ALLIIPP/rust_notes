@@ -1,0 +1,12 @@
+
+Chapter 2
+
+- the "::" syntax denotes an associated function i.e let mut guess = new::String();
+- associated functions are functions that belong to a type as opposed to a specific instance
+- Result type is enum with variants <Ok, Err>
+    - Ok means operation was succesful and contains the generated value
+    - Err means operation failed and contains information about error
+- expect causes program to crash on Err variant
+
+- library crate: contains code for use by other programs
+- binary crate: an executable
