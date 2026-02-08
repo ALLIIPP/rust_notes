@@ -1,0 +1,53 @@
+ch_04
+------
+
+- stack and heap are memory available to program but are organized differently
+stack
+    - LIFO
+    - all data stored on the stack must have a known fixed size 
+    - pointers stored on the stack (known fixed size)
+
+heap
+    - stores data with unknown size at compile time or size that can change 
+    - space is allocated on the heap upon request by Operating System ('allocating on the heap' 
+    || 'allocating') the pointer to this memory location is returned
+
+
+    - allocating to heap requires more work than pushing to the stack, OS must find memory location large 
+    enough to hold data. pushing to stack easier because memory location always at top of stack
+
+    - allocate to heap -> pointer stored on stack -> must follow pointer to get there (time-intensive)
+    - data "closer together" on stack (faster) than heap
+
+
+ownership
+    - all values in rust have one owner at a time. when owner goes out of scope, the value is dropped
+    - Rust calls 'drop' function when variable goes out of scope to release memory back to OS
+    - when rust copies pointer to memory location, it invalidates the first pointer (this is called a move)
+    - double-free error: progam tries to free same memory location more than once (ownership rules solve this problem)
+
+References
+    - when a function accepts a reference its called "borrowing"
+    - references are immutable by default but can be made mutable
+    - only 1 mutable reference can exist at a time to prevent data race (2 pointers manipulate same data without a way to coordinate
+    between them)
+    - dangling reference = reference to nothing (rust checks for this)    
+    - reference rules
+        1. can have 1 immutable reference
+        OR
+        2. many immutable references
+        3. references must point to something
+ 
+Copy Trait / Drop Trait
+    - if a type has the Copy trait, an older variable is still usable after assignment
+    - a type cannot have Copy and Drop traits
+
+String
+    - String type : String(stack) => (location on heap)
+        - String(stack): pointer, length, capacity
+    - data on heap not copied (expensive)
+    
+String slices 
+    - reference to a part of a string (specifically the first element and length)
+    - ex. &some_string[0,5]
+
