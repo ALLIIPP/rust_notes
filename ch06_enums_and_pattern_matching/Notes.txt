@@ -1,0 +1,25 @@
+Ch 06
+---------------
+algebraic data types
+    - a composite data type (a type formed by combining other types)
+    - variants are called tagged union / disjoint union
+    - 2 constructions
+        1) Sum Type
+            • (A XOR B) - could be 1 (and only 1) of a given set of types
+            • example. traffic light can be red, yellow, or green
+            • example. shape can be circle or square
+    
+        2) Product Type
+            • (A * B) - a value of this type will contain all a value for each of its component types
+            • example. a point type must contain a X and Y coordinate
+            • example. tuples / records
+
+record
+    - aka. struct, structure, user-defined-type (UDT), compound data type
+    - a composite data stucture (a collection of fields)
+
+
+- rust does not support null value
+- rust uses enum to encode the concept of a value being present or absent
+
+- Some/None : both Option type (used to encode concept of an empty or present value)

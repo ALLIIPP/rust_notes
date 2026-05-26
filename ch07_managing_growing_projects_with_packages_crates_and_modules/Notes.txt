@@ -1,0 +1,28 @@
+ch07
+---------
+
+(will need to revisit this later)
+
+- crate: a tree of modules that produces a library or executable
+- binary crate: containe main function + compile to exeutable
+- library crate: dont have a main function + dont compile to executable
+
+- a package can contain multiple binary crates and optionally one library crate
+
+modules
+-----------------------------
+
+- organize code within a crate into groups for readability and easy reuse
+- also control privacy of items (public/private)
+    
+    Rust privacy boudaries
+    ----------------------
+        - "all items are private by default"
+        - items in a parent module cannot use private memmbers of a child module
+        - items in a child module can use private members of an ancestor module
+
+re-exporting
+-------------------
+- reexport name (scope) to be used externally by importing code (pub use ...)
+
+

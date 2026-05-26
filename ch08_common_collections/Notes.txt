@@ -1,0 +1,10 @@
+ch08
+--------------
+
+vectors
+    -what exaclty is stored contiguously in memory (pointers or actual data) and why
+        
+
+Strings
+
+Hashmaps

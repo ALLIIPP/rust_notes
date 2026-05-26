@@ -1,0 +1,13 @@
+ch05
+-----------
+
+tuple struct
+    - ex. struct Color(i32,i32,i32);
+
+automatic referencing and dereferencing
+    - p1.distance(&p2);
+    - (&p1).distance(&p2)  (both are the same)
+
+    because self type is defined in impl method signature, we dont have to annotate as reference(&), mutable 
+    reference(mut &), or object itself (self)
+
